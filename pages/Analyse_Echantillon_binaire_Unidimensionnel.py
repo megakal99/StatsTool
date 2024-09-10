@@ -71,10 +71,7 @@ def validate_data():
         mean_sample = data['Transformed_Binary'].mean()
     except Exception:
         mean_sample = data.iloc[:,1].mean()
-        # if sample_size>=population_size:
-        #     st.error("La taille de l'échantillon est supérieure ou égale à la taille de la population. C'est illogique !\nVeuillez vérifier la taille de l'échantillon ou le nombre d'observations de la population que vous avez entré.")
-        #     st.stop()
-        # else:
+    
     # Estimation de la taille d'échantillon significative pour faire le test z et garder la meme marge d'erreur alpha
     z_score = stats.norm.ppf(1 - alpha / 2)
     estimated_sample_size=int((z_score**2)*float(population_expected_mean)*(1-float(population_expected_mean))/(alpha**2))
@@ -139,7 +136,7 @@ def z_test(population_prop,sample_prop=mean_sample,sample_size=sample_size,alpha
 
     Retourne :
     - result1 : DataFrame contenant les statistiques descriptives de l'échantillon
-    - result2 : DataFrame contenant les résultats du test binomial
+    - result2 : DataFrame contenant les statistiques du Ztest, avec une conclusion
     """
     st.divider()
     st.header("Résultats d'Analyse")
@@ -202,8 +199,8 @@ def binomial_test_result(population_prop,sample_prop=mean_sample,sample_size=sam
     - alpha : Niveau de significativité (par défaut, 0,05 pour un intervalle de confiance de 95 %)
 
     Retourne :
-    - result1 : DataFrame contenant les statistiques descriptives de l'échantillon
-    - result2 : DataFrame contenant les résultats du test binomial
+    - result1 : DataFrame contenant les statistiques descriptives de l'échantillon.
+    - result2 : DataFrame contenant les statistiques du test binomial, avec une conclusion.
     """
     
     # Calculer l'ecart type
@@ -388,7 +385,6 @@ if data_choice == "Uploader un fichier":
         else:
             st.error("Le format de fichier n'est pas pris en charge.")
             st.stop()
-        #population_size=st.sidebar.number_input("La Taille de la population (requis)", min_value=1, value=None)
 
 elif data_choice == "Générer des données aléatoires":
     data_size = st.sidebar.number_input("Taille de l'échantillon", min_value=2000, max_value=50000, value=2000)

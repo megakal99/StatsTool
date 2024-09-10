@@ -15,7 +15,7 @@ st.set_page_config(
 st.title("Guide et documentation de l'application 💡")
 st.header('Introduction')
 st.markdown("""
- Bienvenue dans la version d'essai de l'application d'analyse statistique pour les dossiers d'assurance de Sanlam. 
+ Bienvenue dans la version limitée de l'application d'analyse statistique pour les dossiers d'assurance de Sanlam. 
  Cet outil est conçu pour évaluer la représentativité des échantillons en fonction de divers critères et tests statistiques. 
  Dans cette version, on se concentre sur le critère ou le test de comparaison de la moyenne ou de la proportion de l'échantillon par rapport à celle hypothétique de la population. 
  Le test Z sera utilisé si les conditions relatives à la taille de l'échantillon requises pour ce test sont remplies ; sinon, le test binomial sera appliqué. 
@@ -72,6 +72,6 @@ st.header('Conclusion')
 st.markdown("""
     ● Le test statistique utilisé dans l'analyse (Ztest ou test binomial) nécessite la moyenne hypothétique ou la moyenne réelle de la population. Bien que cela puisse être considéré comme une limitation, il est important de noter que, dans le contexte de l'échantillonnage, l'accès à cette information ainsi qu'à d'autres informations pertinentes sur la population est essentiel. Ces données peuvent être fournies par la pratique ou l'expertise métier.         
     
-    ● La version complète de l'application, incluant l'analyse multidimensionnelle, sera communiquée après que les utilisateurs potentiels, tels que les gestionnaires en assurance, seront à l'aise avec cette version d'essai et se seront familiarisés avec ses fonctionnalités.    
+    ● La version complète de l'application, incluant l'analyse multidimensionnelle, sera communiquée après que les utilisateurs potentiels, tels que les gestionnaires en assurance, seront à l'aise avec cette version limitée et se seront familiarisés avec ses fonctionnalités.    
     """)
 

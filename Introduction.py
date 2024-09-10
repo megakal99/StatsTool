@@ -72,6 +72,6 @@ st.header('Conclusion')
 st.markdown("""
     ● Le test statistique utilisé dans l'analyse (Ztest ou test binomial) nécessite la moyenne hypothétique ou la moyenne réelle de la population. Bien que cela puisse être considéré comme une limitation, il est important de noter que, dans le contexte de l'échantillonnage, l'accès à cette information ainsi qu'à d'autres informations pertinentes sur la population est essentiel. Ces données peuvent être fournies par la pratique ou l'expertise métier.         
     
-    ● La version complète de l'application, incluant l'analyse multidimensionnelle, sera communiquée après que les utilisateurs potentiels, tels que les gestionnaires en assurance, se seront familiarisés avec cette version d'essai.
+    ● La version complète de l'application, incluant l'analyse multidimensionnelle, sera communiquée après que les utilisateurs potentiels, tels que les gestionnaires en assurance, seront à l'aise avec cette version d'essai et se seront familiarisés avec ses fonctionnalités.    
     """)
 

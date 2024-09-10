@@ -61,7 +61,7 @@ st.markdown("""
         
 """)
 
-st.header('Conseils pour éviter le déclenchement des erreurs dans l'application')
+st.header('Conseils pour éviter le déclenchement des erreurs dans l\'application')
 st.markdown("""
     ● Avant de cliquer sur le bouton "Analyser", assurez-vous que la moyenne attendue (ou la proportion) de la population a été saisie.
 

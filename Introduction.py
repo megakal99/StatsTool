@@ -27,29 +27,11 @@ key = os.getenv('access_key', 'default_value')
 # Fonction pour valider la clé d'entrée de l'utilisateur
 def validate_key(input_key):
     return input_key == key
-
-# Fonction  pour gérer le statut d'accès
-
-def login_modal():
-    # if st.session_state.logged_in:
-    #     st.success("✅ Accès accordé ! Vous avez le droit d'utiliser l'application ...")
-
-    # else:
-      if st.session_state.tries>=5:
-        st.warning("Trop de tentatives d'accès. Veuillez contacter : [khalil.blm2000@gmail.com].")
-        st.stop()
-      else:
-        st.title("Valider l'accès à l'application")
-        user_input = st.text_input("Entrez la clé secrète (email address):")
-        submit_button = st.button("Valider")
-        
-        if submit_button:
-            if validate_key(user_input):
-                st.session_state.logged_in = True
-                #st.success("✅ Accès accordé ! Vous avez le droit d'utiliser l'application ...")
-                st.title("Guide et documentation de l'application 💡")
-                st.header('Introduction')
-                st.markdown("""
+# fonction pour afficher le contenu de la page Guide
+def display_content():
+    st.title("Guide et documentation de l'application 💡")
+    st.header('Introduction')
+    st.markdown("""
                 Bienvenue dans la version limitée de l'application d'analyse statistique pour les dossiers d'assurance de Sanlam. 
                 Cet outil est conçu pour évaluer la représentativité des échantillons en fonction de divers critères et tests statistiques. 
                 Dans cette version, on se concentre sur le critère ou le test de comparaison de la moyenne ou de la proportion de l'échantillon par rapport à celle hypothétique de la population. 
@@ -60,8 +42,8 @@ def login_modal():
                 Dans ce cas, la variable binaire ciblée est le type de dossier. On effectuera donc une analyse unidimensionnelle binaire basée sur cette variable pour vérifier si l'échantillon est un candidat probable à être extrapolé à la population. Si tel est le cas, il faudra confirmer cette extrapolation par une analyse multidimensionnelle couvrant diverses caractéristiques statistiques pertinentes afin d'obtenir des conclusions fiables.
                 """)
 
-                st.header('Informations Nécessaires pour l\'Analyse Unidimensionnelle')
-                st.markdown("""
+    st.header('Informations Nécessaires pour l\'Analyse Unidimensionnelle')
+    st.markdown("""
                     
                     ➤ Moyenne (ou Proportion) Attendue :
                         
@@ -96,20 +78,38 @@ def login_modal():
                         
                 """)
 
-                st.header('Conseils pour éviter le déclenchement des erreurs dans l\'application')
-                st.markdown("""
+    st.header('Conseils pour éviter le déclenchement des erreurs dans l\'application')
+    st.markdown("""
                     ● Avant de cliquer sur le bouton "Analyser", assurez-vous que la moyenne attendue (ou la proportion) de la population a été saisie.
 
                     ● Après avoir téléversé les données de l'échantillon et saisi la moyenne ou la proportion hypothétique de la population, veuillez choisir la catégorie que vous souhaitez analyser (la catégorie représentant une valeur de 1 ou un cas de succès, par exemple, la catégorie "vrai", "anomalie" ou "1"). Ensuite, cliquez sur le bouton "Analyser" pour compléter l'analyse.
                     """)
 
-                st.header('Conclusion')
-                st.markdown("""
+    st.header('Conclusion')
+    st.markdown("""
                     ● Le test statistique utilisé dans l'analyse (Ztest ou test binomial) nécessite la moyenne hypothétique ou la moyenne réelle de la population. Bien que cela puisse être considéré comme une limitation, il est important de noter que, dans le contexte de l'échantillonnage, l'accès à cette information ainsi qu'à d'autres informations pertinentes sur la population est essentiel. Ces données peuvent être fournies par la pratique ou l'expertise métier.         
                     
                     ● La version complète de l'application, incluant l'analyse multidimensionnelle, sera communiquée après que les utilisateurs potentiels, tels que les gestionnaires en assurance, seront à l'aise avec cette version limitée et se seront familiarisés avec ses fonctionnalités.    
                     """)
+    
+# Fonction  pour gérer le statut d'accès
 
+def login_modal():
+    if st.session_state.logged_in:
+       display_content()
+    else:
+      if st.session_state.tries>=5:
+        st.warning("Trop de tentatives d'accès. Veuillez contacter : [khalil.blm2000@gmail.com].")
+        st.stop()
+      else:
+        st.title("Valider l'accès à l'application")
+        user_input = st.text_input("Entrez la clé secrète (email address):")
+        submit_button = st.button("Valider")
+        
+        if submit_button:
+            if validate_key(user_input):
+                st.session_state.logged_in = True
+                display_content()
             else:
                 if st.session_state.tries<5:
                     st.warning("⚠️ Clé invalide. Veuillez réessayer.")

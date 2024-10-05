@@ -7,11 +7,11 @@
 
     # Note : statsapp est le nom de l'image Docker. Vous pouvez choisir un autre nom si vous le souhaitez.
     3- Exécuter le conteneur Docker par la commande bash suivante :
-    docker run -d -p 8501:8501 statsapp
+    docker run -d -p 8601:8601 statsapp
 
     4- Accéder à l'application : Vous pouvez maintenant accéder à l'application via votre navigateur à l'adresse suivante :
-        http://0.0.0.0:8501
-        http://localhost:8501
+        http://0.0.0.0:8601
+        http://localhost:8601
 
 ### Déploiement sur un serveur
 
@@ -23,6 +23,6 @@
 
     Note : statsapp est le nom de l'image Docker. Vous pouvez choisir un autre nom si vous le souhaitez.
     4- Exécuter le conteneur Docker par la commande bash suivante :
-    docker run -d -p 8501:8501 statsapp
+    docker run -d -p 8601:8601 statsapp
 
-    5- Accéder à l'application : Vous pouvez maintenant accéder à l'application via le navigateur en utilisant l'adresse IP du serveur et le port spécifié (8501), par exemple : http://<adresse-ip_de_votre_serveur>:8501
+    5- Accéder à l'application : Vous pouvez maintenant accéder à l'application via le navigateur en utilisant l'adresse IP du serveur et le port spécifié (8601), par exemple : http://<adresse-ip_de_votre_serveur>:8601

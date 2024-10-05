@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exposer le port que Streamlit utilise (par défaut 8501)
-EXPOSE 8501
+EXPOSE 8601
 
 # Définir la commande par défaut pour lancer Streamlit avec les paramètres appropriés (--server.address=0.0.0.0 pour écouter sur toutes les interfaces réseau. Cela permet à l'application d'être accessible depuis n'importe quelle adresse IP)
-CMD ["streamlit", "run", "Introduction.py", "--server.address=0.0.0.0", "--server.port=8501"]
+CMD ["streamlit", "run", "Valider_Acces.py", "--server.address=0.0.0.0", "--server.port=8601"]

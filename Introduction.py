@@ -103,7 +103,7 @@ def login_modal():
         st.stop()
       else:
         st.title("Valider l'accès à l'application")
-        user_input = st.text_input("Entrez la clé secrète (email address):")
+        user_input = st.text_input("Entrez la clé secrète:")
         submit_button = st.button("Valider")
         
         if submit_button:

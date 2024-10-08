@@ -99,7 +99,7 @@ def login_modal():
        display_content()
     else:
       if st.session_state.tries>=5:
-        st.warning("Trop de tentatives d'accès. Veuillez contacter : [khalil.blm2000@gmail.com].")
+        st.warning("Trop de tentatives d'accès. Veuillez contacter : [siham.ousaid@financeproadvisory.com].")
         st.stop()
       else:
         st.title("Valider l'accès à l'application")
@@ -115,7 +115,7 @@ def login_modal():
                     st.warning("⚠️ Clé invalide. Veuillez réessayer.")
                     st.session_state.tries+=1
                 else:
-                    st.error("Trop de tentatives d'accès. Veuillez contacter : [khalil.blm2000@gmail.com].")
+                    st.error("Trop de tentatives d'accès. Veuillez contacter : [siham.ousaid@financeproadvisory.com].")
                     
 
 # Exécuter la fonction d'accès pour afficher le formulaire de validation d'accès

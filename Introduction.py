@@ -48,7 +48,7 @@ def display_content():
                     ➤ Moyenne (ou Proportion) Attendue :
                         
                         ● Il s'agit simplement de la proportion attendue ou hypothétique d'une catégorie spécifique dans la population. 
-                        Par exemple, si vous estimez ou supposez que 60 % des dossiers dans la population sont des anomalies, vous devez saisir cette proportion (60 % ou 0,6) dans l'application pour la comparer à celle que vous observez dans votre échantillon.
+                        Par exemple, si vous estimez ou supposez que 3% des dossiers dans la population sont des anomalies, vous devez saisir cette proportion (3% ou 0,03) dans l'application pour la comparer à celle que vous observez dans votre échantillon.
                     
                     ➤ Seuil de Significativité (α) :
                     
@@ -120,6 +120,7 @@ def login_modal():
         if submit_button:
             if validate_key(user_input):
                 st.session_state.logged_in = True
+                st.success("✅ Accès accordé ! Vous avez le droit d'utiliser l'application ...")
                 display_content()
             else:
                 if st.session_state.tries<5:

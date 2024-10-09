@@ -22,7 +22,7 @@ if 'tries' not in st.session_state:
 load_dotenv()
 
 # Récupérer la variable locale
-key = os.getenv('access_key', 'default_value')
+key = os.getenv('access_key')
 
 # Fonction pour valider la clé d'entrée de l'utilisateur
 def validate_key(input_key):
@@ -30,7 +30,7 @@ def validate_key(input_key):
 # fonction pour afficher le contenu de la page Guide
 def display_content():
     st.title("Guide et documentation de l'application 💡")
-    st.header('Documentation')
+    st.header('Introduction')
     st.markdown("""
                 Bienvenue dans la version limitée de l'application d'analyse statistique pour les dossiers d'assurance de Sanlam. 
                 Cet outil est conçu pour évaluer la représentativité des échantillons en fonction de divers critères et tests statistiques. 

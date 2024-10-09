@@ -20,12 +20,16 @@ st.set_page_config(
 )
 
 ###################################################"Global variable"
-data=None
+# Initialiser l'état de la session pour les données
+if 'data0' not in st.session_state:
+    st.session_state.data0 = None
+
+
+data = st.session_state.data0
 population_expected_mean=None
 mean_sample=None
 alpha=None
 sample_size=None
-#population_size=None
 check=None
 estimated_sample_size=None
 Taille_minimale=None
@@ -40,9 +44,13 @@ def validate_data():
         pass
     
     if data.shape[1] != 2:
-        st.error("Le nombre de variables (colonnes) doit être égal à 2 : la première colonne pour la variable identifiant les observations ou les dossiers, et la deuxième colonne pour la variable binaire qui sera étudiée dans notre test.\nCette analyse est unidimensionnelle.")
-        st.stop()
+        if data.shape[1] == 3 and 'Transformed_Binary' in list(data.columns):
+            data=data.iloc[:,[0,1]]
+        else:
+            st.error("Le nombre de variables (colonnes) doit être égal à 2 : la première colonne pour la variable identifiant les observations ou les dossiers, et la deuxième colonne pour la variable binaire qui sera étudiée dans notre test.\nCette analyse est unidimensionnelle.")
+            st.stop()
     
+    # Vérifier s'il y'a des valeurs manquantes
     if data.isnull().sum().sum()>0:
         data.dropna(inplace=True)
         st.warning("Les valeurs manquantes ont été détectées et les lignes concernées ont été supprimées.")
@@ -160,7 +168,6 @@ def z_test(population_prop,sample_prop=mean_sample,sample_size=sample_size,alpha
     # Calculate confidence interval
     ci_lower = sample_prop - z_critical * standard_error
     ci_upper = sample_prop + z_critical * standard_error
-    print('*****************',sample_prop)
     test_result=(
     f"❌ L'hypothèse nulle est rejetée, ce qui démontre de manière significative une différence "
     f"entre la moyenne (la proportion) de l'échantillon et celle de la population. Ainsi, il est évident que "
@@ -373,7 +380,7 @@ def plot_binary_distribution_pie(data):
     plt.tight_layout()
     st.pyplot(fig)
 ##################################################################################
-# Initialiser l'état de la session pour le statut d'accès et le nombre de tentatives d'accès
+# Initialiser l'état de la session pour le statut d'accès 
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
@@ -388,7 +395,6 @@ if st.session_state.logged_in:
         if uploaded_file is not None:
             if uploaded_file.name.endswith('.csv'):
                 data = pd.read_csv(uploaded_file)
-                
             elif uploaded_file.name.endswith('.xlsx'):
                 data = pd.read_excel(uploaded_file, engine='openpyxl')
             else:
@@ -398,11 +404,14 @@ if st.session_state.logged_in:
     elif data_choice == "Générer des données aléatoires":
         data_size = st.sidebar.number_input("Taille de l'échantillon", min_value=2000, max_value=50000, value=2000)
         data=generate_binary_dataframe(data_size)
-
+        
+    st.session_state.data0 = data
+    
     population_expected_mean = st.sidebar.number_input("Moyenne (proportion) attendue de la population (requis)", min_value=0.01, max_value=1.0, value=None)
     alpha = st.sidebar.slider("Niveau de signification (alpha)", min_value=0.01, max_value=0.10, value=0.05, step=0.01)
-
-    if population_expected_mean and alpha: #and population_size :
+    
+    if population_expected_mean and alpha:
+        st.session_state.population_expected_mean=population_expected_mean
         check=validate_data()
     button=st.sidebar.button('Analyser',key='AnalyserButton')
     if button:
@@ -430,3 +439,4 @@ if st.session_state.logged_in:
             
 else:
     st.warning("⛔ Accès refusé. Veuillez vous assurer que vous validez votre accès.")
+

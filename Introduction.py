@@ -30,7 +30,7 @@ def validate_key(input_key):
 # fonction pour afficher le contenu de la page Guide
 def display_content():
     st.title("Guide et documentation de l'application 💡")
-    st.header('Introduction')
+    st.header('Documentation')
     st.markdown("""
                 Bienvenue dans la version limitée de l'application d'analyse statistique pour les dossiers d'assurance de Sanlam. 
                 Cet outil est conçu pour évaluer la représentativité des échantillons en fonction de divers critères et tests statistiques. 
@@ -78,12 +78,23 @@ def display_content():
                         
                 """)
 
-    st.header('Conseils pour éviter le déclenchement des erreurs dans l\'application')
+    st.header('Guide')
     st.markdown("""
                     ● Avant de cliquer sur le bouton "Analyser", assurez-vous que la moyenne attendue (ou la proportion) de la population a été saisie.
 
                     ● Après avoir téléversé les données de l'échantillon et saisi la moyenne ou la proportion hypothétique de la population, veuillez choisir la catégorie que vous souhaitez analyser (la catégorie représentant une valeur de 1 ou un cas de succès, par exemple, la catégorie "vrai", "anomalie" ou "1"). Ensuite, cliquez sur le bouton "Analyser" pour compléter l'analyse.
-                    """)
+
+                    ● Si vous avez téléversé ou généré aléatoirement un jeu de données, puis que vous avez navigué vers une autre page et que vous revenez à la page d'analyse, tous les résultats d'analyse seront supprimés. Pour les réafficher, il vous suffit de réinsérer la proportion ou la moyenne hypothétique de la population, puis de cliquer sur le bouton 'Analyser' et de vérifier la catégorie visée dans l'analyse (la catégorie de la variable catégorielle binaire qui reflète le succès ou la valeur 1 dans votre contexte). Aucun re-téléversement des données n'est nécessaire pour refaire l'analyse statistique.
+
+                    ● Les données restent sauvegardées temporairement dans la mémoire durant votre session d'utilisation, même si vous naviguez à différentes pages de l'application.
+
+                    ● Les données téléversées ou générées seront complètement supprimées si vous réinitialisez votre session en rafraîchissant l'application (c'est-à-dire en actualisant l'une des pages) ou en téléversant ou générant un nouveau jeu de données (dans ce cas, les données précédentes seront supprimées de la session et remplacées par les nouvelles données).
+
+                    ● La permission d'accès sera totalement supprimée si vous réinitialisez votre session d'utilisation en rafraîchissant l'application, en vous reconnectant ou en supprimant l'historique de navigation.
+
+                    ● Chaque session d'utilisation est indépendante, sans partage de données entre les sessions.
+                                    
+                """)
 
     st.header('Conclusion')
     st.markdown("""

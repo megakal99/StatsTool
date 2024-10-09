@@ -8,7 +8,7 @@ current_directory = os.path.dirname(__file__)
 favicon_path = os.path.join(current_directory, 'static', 'Stats.png')
 
 st.set_page_config(
-    page_title="Validate Sample",
+    page_title="Guide",
     page_icon=favicon_path,  
 )
 ################################################################

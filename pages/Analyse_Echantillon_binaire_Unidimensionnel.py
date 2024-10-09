@@ -301,7 +301,6 @@ def findRepresentativeSubSample(data,population_prop, alpha=0.05, max_iterations
     bool: 1 si le résultat du test est positif sinon 0
     sub_sample_prop: Proportion du sous-échantillon (la fréquence des valeurs 1 estimée ou réelle)
     """
-    #sample_size = data.shape[0]
     is_representative=None
     # Vérifier la taille de l'échantillon pour le test Z
     if sample_size >= 500:

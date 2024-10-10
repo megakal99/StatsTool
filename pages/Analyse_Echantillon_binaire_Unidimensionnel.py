@@ -408,9 +408,16 @@ if st.session_state.logged_in:
     population_expected_mean = st.sidebar.number_input("Moyenne (proportion) attendue de la population (requis)", min_value=0.01, max_value=1.0, value=None)
     alpha = st.sidebar.slider("Niveau de signification (alpha)", min_value=0.01, max_value=0.10, value=0.05, step=0.01)
     check=None
-    if population_expected_mean and alpha:
-        st.session_state.population_expected_mean=population_expected_mean
+    if population_expected_mean and alpha and data is not None:
         check=validate_data()
+    else:
+        if not population_expected_mean:
+            st.error("Veuillez saisir la moyenne (ou proportion) hypothétique de la population.")
+            st.stop()
+        if not data:
+            st.error("Veuillez téléverser ou générer votre jeu de données.")
+            st.stop()
+        
     button=st.sidebar.button('Analyser',key='AnalyserButton')
     if button:
         if check=='ztest':

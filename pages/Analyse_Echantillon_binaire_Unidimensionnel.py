@@ -412,10 +412,10 @@ if st.session_state.logged_in:
         check=validate_data()
     else:
         if not population_expected_mean:
-            st.error("Veuillez saisir la moyenne (ou proportion) hypothétique de la population.")
+            st.warning("Veuillez saisir la moyenne (ou proportion) hypothétique de la population.")
             st.stop()
         if not data:
-            st.error("Veuillez téléverser ou générer votre jeu de données.")
+            st.warning("Veuillez téléverser ou générer votre jeu de données.")
             st.stop()
         
     button=st.sidebar.button('Analyser',key='AnalyserButton')

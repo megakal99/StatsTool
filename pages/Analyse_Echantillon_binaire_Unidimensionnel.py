@@ -411,7 +411,7 @@ if st.session_state.logged_in:
     if population_expected_mean and alpha and data is not None:
         check=validate_data()
     else:
-        if not data:
+        if data is None:
             st.warning("Veuillez téléverser ou générer votre jeu de données.")
             st.stop()
         if not population_expected_mean:

@@ -187,7 +187,7 @@ def z_test(population_prop,sample_prop=mean_sample,sample_size=sample_size,alpha
         "p_value": [f'{round(p_value*100,2)}%'],
         "alpha": [f'{int(alpha*100)}%'],
         "critical_value": ["{:.2f}".format(z_critical)],
-        "interval de confiance":[f"[{round(ci_lower,2)},{round(ci_upper,2)}]"],
+        "interval de confiance":[f"[{round(ci_lower,4)},{round(ci_upper,4)}]"],
         "test_result": [f"{test_result}"]
         }
 
@@ -216,7 +216,7 @@ def binomial_test_result(population_prop,sample_prop=mean_sample,sample_size=sam
     except Exception:
         nombre_de_succes = data[data.iloc[:,1]==1].shape[0]
 
-    # Effectuer le test binomial
+    # Effectuer le test binomial et calculer l'intervalle de confiance par la méthode exacte la plus conservatrice, Clopper-Pearson
     results = stats.binomtest(nombre_de_succes, sample_size, population_prop, alternative='two-sided')
     ci_lower=results.proportion_ci(confidence_level=1-alpha)[0]
     ci_upper=results.proportion_ci(confidence_level=1-alpha)[1]
@@ -245,7 +245,7 @@ def binomial_test_result(population_prop,sample_prop=mean_sample,sample_size=sam
         "p_value": [f'{round(results.pvalue * 100, 2)}%'],
         "alpha": [f'{int(alpha * 100)}%'],
         "critical_value": ["{:.2f}".format(results.statistic)],
-        "interval de confiance":[f"[{round(ci_lower,2)},{round(ci_upper,2)}]"],
+        "interval de confiance":[f"[{round(ci_lower,4)},{round(ci_upper,4)}]"],
         "test_result": [f"{test_result}"]
     }
     
